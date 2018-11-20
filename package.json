@@ -1,0 +1,24 @@
+{
+  "name": "canvasapp",
+  "version": "1.0.0",
+  "description": "Automatically search for answers on Quizlet for Canvas",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris01b/canvasApp.git"
+  },
+  "author": "chris01b",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/chris01b/canvasApp/issues"
+  },
+  "homepage": "https://github.com/chris01b/canvasApp#readme",
+  "dependencies": {
+    "googleapis": "^35.0.0",
+    "node-quizlet": "^1.0.0-1",
+    "request": "^2.88.0"
+  }
+}
