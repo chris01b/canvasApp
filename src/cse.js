@@ -32,4 +32,4 @@ class cse {
 
 }
 
-module.exports = cse
+module.exports = cse;

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/chris01b/canvasApp#readme",
   "dependencies": {
+    "array-foreach-async": "^1.0.1",
     "googleapis": "^35.0.0",
     "node-quizlet": "^1.0.0-1",
     "request": "^2.88.0"
