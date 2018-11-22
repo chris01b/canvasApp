@@ -18,7 +18,7 @@ async function findAnswers() {
   await forEachAsync(questions, async (question, index) => {
     let myCse = new cse("AIzaSyB_YyRZ3ePQNEephDs20BwuH_N-k1C_GH4", "000633526768340694300:gdwf-ty5mtk");
     let myQuizlet = new Quizlet("R3snf5zu9W");
-    sets = await myCse.makeQuery(question);
+    sets = await myCse.makeQuery(question).catch(console.error);
     answer = await myQuizlet.search(sets, question);
     answers.push(answer);
     // Output the answers and their number

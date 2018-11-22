@@ -4,7 +4,8 @@
   "description": "Automatically search for answers on Quizlet for Canvas",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node src/index.js",
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,10 @@
     "url": "https://github.com/chris01b/canvasApp/issues"
   },
   "homepage": "https://github.com/chris01b/canvasApp#readme",
+  "transform": [["babelify", { "presets": ["@babel/preset-env"] }]],
   "dependencies": {
-    "googleapis": "^35.0.0",
+    "axios": "^0.18.0",
+    "querystring": "^0.2.0",
     "request": "^2.88.0"
   },
   "devDependencies": {

@@ -1,13 +1,13 @@
 //return a set of quizlet set ids that contains a match for the query
 
-const {google} = require('googleapis');
-const customsearch = google.customsearch('v1');
+const axios = require("axios");
+const querystring = require("querystring");
 
 class cse {
 
   constructor(apiKey, cx) {
-    this.apiKey = apiKey;
-    this.cx = cx
+    this.baseURL = 'https://www.googleapis.com/customsearch/v1/siterestrict?'
+      + querystring.stringify({cx: cx, key: apiKey});
   }
 
   parseResults(results) {
@@ -21,13 +21,11 @@ class cse {
   }
 
   async makeQuery(q) {
-    const res = await customsearch.cse.list({
-      cx: this.cx,
-      q: "\"" + q + "\"",
-      auth: this.apiKey,
-    });
+    const url = this.baseURL + '&' +
+      querystring.stringify({q: q, exactTerms: q});
+    const response = await axios.get(url);
 
-    return this.parseResults(res.data.items);
+    return this.parseResults(response.data.items);
   }
 
 }
