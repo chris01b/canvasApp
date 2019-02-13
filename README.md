@@ -8,5 +8,7 @@ Automatically search for answers from Quizlet on Canvas
 2. Copy and paste the questions into `PASTE_QUESTIONS.txt`.
 3. Run: `npm test` from the root of the folder.
 
+OR try it on [Repl](https://repl.it/@chris01b/canvasApp)
+
 ## Abuse
 Please don't abuse API keys. This is the honor code.
