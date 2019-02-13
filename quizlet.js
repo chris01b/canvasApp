@@ -1,3 +1,5 @@
+// return quizlet answer from url
+
 const axios = require("axios");
 
 class Quizlet {
@@ -24,10 +26,8 @@ class Quizlet {
 
   async search(setIDs, term) {
     this.term = term;
-    try {
-      const response = await axios.get(this.baseURL + setIDs.toString());
-      return this.parseSets(response.data);
-    } catch(e) {}
+    const response = await axios.get(this.baseURL + setIDs.toString());
+    return this.parseSets(response.data);
   }
 
 }
