@@ -24,8 +24,9 @@ class cse {
     const url = this.baseURL + '&' +
       querystring.stringify({q: q, exactTerms: q});
     const response = await axios.get(url);
-
-    return this.parseResults(response.data.items);
+    try {
+      return this.parseResults(response.data.items);
+    } catch(e) {}  
   }
 
 }

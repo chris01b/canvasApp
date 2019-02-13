@@ -24,8 +24,10 @@ class Quizlet {
 
   async search(setIDs, term) {
     this.term = term;
-    const response = await axios.get(this.baseURL + setIDs.toString());
-    return this.parseSets(response.data);
+    try {
+      const response = await axios.get(this.baseURL + setIDs.toString());
+      return this.parseSets(response.data);
+    } catch(e) {}
   }
 
 }

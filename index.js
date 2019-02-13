@@ -10,7 +10,7 @@ forEachAsync = async function(array, callback) {
     for (let index = 0; index < array.length; index++) {
       callback(array[index], index, array);
     }
-  } catch {}
+  } catch(e) {}
 };
 
 async function findAnswers() {
@@ -24,6 +24,7 @@ async function findAnswers() {
     // Output the answers and their number
     console.log(index+1);
     console.log(answer);
+    console.log("");
   });
 }
 
@@ -31,7 +32,9 @@ findAnswers().catch(console.error);
 
 if (module === require.main) {
   const fs = require('fs');
-  var questions = fs.readFileSync(path.resolve(__dirname, '../questions.txt')).toString().split("\n");
+  const file = path.resolve(__dirname, 'PASTE_QUESTIONS.txt');
+  fs.appendFileSync(file, '\n');
+  var questions = fs.readFileSync(file).toString().split("\n");
   questions.pop(questions.length-1);
   findAnswers().catch(console.error);
 }

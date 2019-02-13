@@ -17,17 +17,20 @@
     "url": "https://github.com/chris01b/canvasApp/issues"
   },
   "homepage": "https://github.com/chris01b/canvasApp#readme",
-  "transform": [["babelify", { "presets": ["@babel/preset-env"] }]],
+  "transform": [
+    [
+      "babelify",
+      {
+        "presets": [
+          "@babel/preset-env"
+        ]
+      }
+    ]
+  ],
   "dependencies": {
     "axios": "^0.18.0",
     "querystring": "^0.2.0",
     "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "babel-core": "^6.26.3",
-    "babelify": "^10.0.0",
-    "browserify": "^16.2.3"
   }
 }
+
