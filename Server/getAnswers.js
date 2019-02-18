@@ -1,9 +1,10 @@
 // Initiate all the stuff here
 
-const path = require("path");
-const cse = require('./cse');
-const Quizlet = require('./quizlet');
-const print = require('./print');
+const cse = require('./libs/cse');
+const Quizlet = require('./libs/quizlet');
+const print = require('./libs/print');
+
+let isModule = true;
 
 forEachAsync = async function(array, callback) {
   // for some reason there is an undefined before 'array' which throws an error
@@ -14,7 +15,7 @@ forEachAsync = async function(array, callback) {
   } catch(e) {}
 };
 
-async function findAnswers(questions) {
+async function findAnswers(questions, callback) {
   let answers = [];
   await forEachAsync(questions, async (question, index) => {
     let myCse = new cse("AIzaSyB_YyRZ3ePQNEephDs20BwuH_N-k1C_GH4", "000633526768340694300:gdwf-ty5mtk");
@@ -24,15 +25,24 @@ async function findAnswers(questions) {
     answer = await myQuizlet.search(sets, question);
     answers.push(answer);
     
-    print([index+1, answer])
+    if (isModule == false) {
+      print([index+1, answer]);
+    } else {
+      // TODO
+    }
   });
 }
 
 findAnswers().catch(console.error);
 
+module.exports = findAnswers;
+
 if (module === require.main) {
   const fs = require('fs');
+  const path = require('path');
   const file = path.resolve(__dirname, 'PASTE_QUESTIONS.txt');
+
+  isModule = false;
 
   fs.readFile(file, (err, questions) => {
     if (err) throw err;
