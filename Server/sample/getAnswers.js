@@ -1,8 +1,8 @@
 // Initiate all the stuff here
 
-const cse = require('./libs/cse');
-const Quizlet = require('./libs/quizlet');
-const print = require('./libs/print');
+const cse = require('../libs/cse');
+const Quizlet = require('../libs/quizlet');
+const print = require('../libs/print');
 
 let isModule = true;
 
