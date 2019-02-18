@@ -1,0 +1,10 @@
+{
+    "name": "canvasApp",
+    "version": "1.0",
+    "manifest_version": 2,
+    
+    "background": {
+        "scripts": ["canvasApp.js"]
+    },
+    "browser_action": {}
+}

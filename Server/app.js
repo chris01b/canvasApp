@@ -6,11 +6,12 @@ const cse = require('./libs/cse');
 const Quizlet = require('./libs/quizlet');
 const print = require('./libs/print');
 
+const PORT = 80;
 
-app.listen(80);
+app.listen(PORT);
 
 function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
+  fs.readFile(__dirname + '/../ChromeExtension/index.html',
   (err, data) => {
     if (err) {
       res.writeHead(500);
@@ -48,7 +49,7 @@ io.on('connection', socket => {
   }
 
   socket.on('submitQuestions', data => {
-    findAnswers(questions.toString().split('\n')).catch(console.error); // Is ".toString()" necessary?
+    findAnswers(questions.toString().split('\n')).catch(console.error);
   });
 
 });
