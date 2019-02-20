@@ -1,0 +1,1 @@
+const monitorRequests = require('./monitorRequests')();

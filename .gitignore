@@ -77,3 +77,6 @@ typings/
 
 #Linux Swap Files
 *.swp
+
+# The built Chrome Extension
+ChromeExtension/

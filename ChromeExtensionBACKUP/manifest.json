@@ -1,0 +1,15 @@
+{
+    "name": "canvasApp",
+    "version": "1.0",
+    "manifest_version": 2,
+    
+    "background": {
+        "page": "background.html"
+    },
+    "browser_action": {
+        "default_icon": {
+            "32": "images/icon32.png"
+        },
+        "default_title": "canvasApp"
+    }
+}

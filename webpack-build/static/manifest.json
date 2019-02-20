@@ -1,0 +1,16 @@
+{
+    "name": "canvasApp",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    
+    "background": {
+        "page": "background.html"
+    },
+    "browser_action": {
+        "default_icon": {
+            "32": "images/icon32.png"
+        },
+        "default_title": "canvasApp"
+    }
+}
