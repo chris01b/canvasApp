@@ -14,6 +14,7 @@ forEachAsync = async function(array, callback) {
 
 module.exports = () => {
   io.on('connection', socket => {
+  console.log('Connected to', socket.id)
 
     async function findAnswers(questions) {
       let answers = [];
@@ -26,11 +27,17 @@ module.exports = () => {
         answers.push(answer);
 
         socket.emit('returnAnswer', [index+1, answer]);
+        console.log('Submitted Answer to', socket.id);
       });
     }
 
     socket.on('submitQuestions', questions => {
       findAnswers(questions.toString().split('\n')).catch(console.error);
+      console.log('Received Questions from', socket.id);
+    });
+
+    socket.on('disconnect', () => {
+      console.log('Disconnected from', socket.id);
     });
 
   });
