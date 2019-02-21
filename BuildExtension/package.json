@@ -1,14 +1,14 @@
 {
-  "name": "webpack-build",
+  "name": "BuildExtension",
   "version": "1.0.0",
-  "description": "A sample Webpack build",
+  "description": "Builds the canvasApp Chrome extension",
   "scripts": {
     "build": "webpack --config ./support/webpack.config.js",
     "build-slim": "webpack --config ./support/webpack.config.slim.js",
     "build-json-parser": "webpack --config ./support/webpack.config.json-parser.js",
     "build-all": "npm run build && npm run build-slim && npm run build-json-parser"
   },
-  "author": "Damien Arrachequesne",
+  "author": "Chris Biddle",
   "license": "MIT",
   "dependencies": {
     "socket.io-client": "^2.2.0",

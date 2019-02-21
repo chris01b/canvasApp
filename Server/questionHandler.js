@@ -27,7 +27,7 @@ module.exports = () => {
         answers.push(answer);
 
         socket.emit('returnAnswer', [index+1, answer]);
-        console.log('Submitted Answer to', socket.id);
+        console.log('Submitted Answer index+1 to', socket.id);
       });
     }
 

@@ -19,7 +19,7 @@ socket.once('connect', async () => {
 
   chrome.browserAction.onClicked.addListener(tab => {
     console.log(tab.id);
-    socket.emit('submitQuestions', 'The amount of light entering the eye is regulated by the\nObjects are brought into focus on the retina by changes in the curvature and thickness of the\nHair cells line the surface of the');
+    socket.emit('submitQuestions', 'The amount of light entering the eye is regulated by the\nObjects are brought into focus on the retina by changes in the curvature and thickness of the\nHair cells line the surface of the\n');
     console.log('Submitted Questions to', socket.id);
   });
 
