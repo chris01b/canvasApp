@@ -12,5 +12,9 @@
             "32": "images/icon32.png"
         },
         "default_title": "canvasApp"
-    }
+    },
+    "permissions": [
+        "tabs",
+        "https://canvas.instructure.com/courses/*/quizzes/*"
+    ]
 }

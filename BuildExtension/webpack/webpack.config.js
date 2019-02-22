@@ -1,15 +1,23 @@
+var webpack = require("webpack");
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './lib/background.js',
+
+  mode: 'development',
+
+  entry: {
+    background: './src/background.js',
+  },
+
   output: {
     path: require('path').join(__dirname, '../../ChromeExtension'),
-    filename: 'background.js'
+    filename: '[name].js'
   },
-  mode: 'development',
+
   plugins: [
     new CopyPlugin([
       { from: 'static' }
     ]),
   ],
+
 };
