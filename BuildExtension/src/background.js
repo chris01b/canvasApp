@@ -1,6 +1,10 @@
 import io from 'socket.io-client';
+import jqueryString from './jqueryString';
+import scrapeQuestionsString from './scrapeQuestionsString';
 
 const socket = io.connect('http://localhost:3000');
+
+let counter = 0;
 
 socket.once('connect', () => {
   console.log('Connected to', socket.id);
@@ -8,38 +12,24 @@ socket.once('connect', () => {
   chrome.browserAction.onClicked.addListener(tab => {
     console.log('browserAction clicked on', tab.id);
 
-    chrome.tabs.executeScript(tab.id, {
-      code: `var questions = $(".question_text > span");
-        console.log(w);
-        chrome.runtime.sendMessage({action: 'questions', src: questions}, function(response) {
-          console.log(response);
-        });
-        console.log('Sent source');`
-    });
+    chrome.tabs.executeScript(tab.id, {code: jqueryString()});
+    chrome.tabs.executeScript(tab.id, {code: scrapeQuestionsString()});
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message.action == 'window') {
-        sendResponse('Received question');
+      if (message.action == 'questions') {
+        sendResponse('Background received questions');
         let questions = message.src;
+
+        // This seems to be wrong. Fix TBA
         socket.emit('submitQuestions', questions);
         console.log('Questions:', questions);
         console.log('Submitted Questions to', socket.id);
+
       } else {
-        sendResponse('Didn\'t receive window');
+        sendResponse('Background didn\'t receive questions');
       }
     });
 
-    /*
-    chrome.tabs.get(tab.id, tab => {
-      chrome.windows.get(tab.windowId, win => { 
-        win.$ = $;
-        let questions = $(".question_text > span");
-        socket.emit(questions);
-        console.log('Questions:', questions);
-        console.log('Submitted Questions to', socket.id);
-      });
-    });
-    */
   });
     
   socket.on('returnAnswer', answer => {
