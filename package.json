@@ -1,0 +1,38 @@
+{
+  "name": "canvasApp",
+  "version": "1.2.0",
+  "description": "Automatically search for answers on Quizlet for Canvas",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "build": "webpack --config server/webpack/webpack.config.js",
+    "build-slim": "webpack --config server/webpack/webpack.config.slim.js",
+    "build-json-parser": "webpack --config server/webpack/webpack.config.json-parser.js",
+    "build-all": "npm run build && npm run build-slim && npm run build-json-parser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris01b/canvasApp.git"
+  },
+  "author": "chris01b",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chris01b/canvasApp/issues"
+  },
+  "homepage": "https://github.com/chris01b/canvasApp#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "dom-to-string": "^1.0.1",
+    "socket.io-client": "^2.2.0",
+    "socket.io-json-parser": "^2.1.0",
+    "copy-webpack-plugin": "^5.0.0",
+    "strip-loader": "^0.1.2",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  }
+}
