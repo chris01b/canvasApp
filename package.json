@@ -4,10 +4,10 @@
   "description": "Automatically search for answers on Quizlet for Canvas",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
-    "build": "webpack --config server/webpack/webpack.config.js",
-    "build-slim": "webpack --config server/webpack/webpack.config.slim.js",
-    "build-json-parser": "webpack --config server/webpack/webpack.config.json-parser.js",
+    "start-server": "node Server/index.js",
+    "build": "webpack --config Server/webpack/webpack.config.js",
+    "build-slim": "webpack --config Server/webpack/webpack.config.slim.js",
+    "build-json-parser": "webpack --config Server/webpack/webpack.config.json-parser.js",
     "build-all": "npm run build && npm run build-slim && npm run build-json-parser"
   },
   "repository": {
