@@ -6,12 +6,10 @@ import scrapeQuestionsString from './scrapeQuestionsString';
 
 const socket = io.connect('http://localhost:3000');
 
-let scraped = false;
-
 async function waitForQuestions() {
   try {
     let [message, sender, sendResponse] = await chromep.runtime.onMessage.addListener();
-    if (message.action == 'questions' && scraped == false) {
+    if (message.action == 'questions') {
       sendResponse('Background received questions');
       let questions = message.src;
 
@@ -19,11 +17,11 @@ async function waitForQuestions() {
       console.log('Questions:', questions);
       console.log('Submitted Questions to', socket.id);
 
-      scraped = true;
     } else {
       sendResponse('Background didn\'t receive questions');
     }
   } catch (e) {console.error(e)}
+  waitForClick();
 }
 
 
@@ -46,7 +44,6 @@ socket.once('connect', () => {
   socket.on('returnAnswer', answer => {
     console.log('Received Answer from', socket.id);
     console.log(answer);
-    scraped = false;
   });
 
   socket.on('disconnect', () => {
