@@ -5,11 +5,9 @@ const Quizlet = require('./libs/quizlet');
 const print = require('./libs/print');
 
 function forEachAsync (array, callback) {
-  try {
-    for (let index = 0; index < array.length; index++) {
-      callback(array[index], index, array);
-    }
-  } catch(e) {}
+  for (let index = 0; index < array.length; index++) {
+    callback(array[index], index, array);
+  }
 };
 
 module.exports = () => {
@@ -22,11 +20,13 @@ module.exports = () => {
         let myCse = new cse("AIzaSyB_YyRZ3ePQNEephDs20BwuH_N-k1C_GH4", "000633526768340694300:gdwf-ty5mtk");
         let myQuizlet = new Quizlet("R3snf5zu9W");
 
-        sets = await myCse.makeQuery(question).catch(console.error);
-        answer = await myQuizlet.search(sets, question);
-        answers.push(answer);
+        try {
+          sets = await myCse.makeQuery(question);
+          answer = await myQuizlet.search(sets, question);
+          answers.push(answer);
 
-        socket.emit('returnAnswer', [index+1, answer]);
+          socket.emit('returnAnswer', [index+1, answer]);
+        } catch(e) {console.error(e)}
         console.log('Submitted Answer', (index+1), 'to', socket.id);
       });
     }
