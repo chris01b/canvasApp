@@ -26,7 +26,11 @@ module.exports = () => {
           answers.push(answer);
 
           socket.emit('returnAnswer', [index+1, answer]);
-        } catch(e) {console.error(e)}
+        } catch(e) {
+          if (e.message == 'Cannot read property \'toString\' of undefined') {
+            console.error('No quizlets found for question', (index+1));
+          }
+        }
         console.log('Submitted Answer', (index+1), 'to', socket.id);
       });
     }

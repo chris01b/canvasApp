@@ -23,9 +23,16 @@ class cse {
   async makeQuery(q) {
     const url = this.baseURL + '&' +
       querystring.stringify({q: q, exactTerms: q});
-    const response = await axios.get(url);
-
-    return this.parseResults(response.data.items);
+    let response;
+    try {
+      response = await axios.get(url);
+      return this.parseResults(response.data.items);
+    } catch(e) {
+      if (e.message == 'Cannot read property \'forEach\' of undefined') {
+      } else {
+        console.error(e);
+      }
+    }
   }
 
 }
