@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start-server": "node Server/index.js",
-    "build": "webpack --config Server/webpack/webpack.config.js",
-    "build-slim": "webpack --config Server/webpack/webpack.config.slim.js",
-    "build-json-parser": "webpack --config Server/webpack/webpack.config.json-parser.js",
+    "build": "webpack --config BuildExtension/webpack/webpack.config.js",
+    "build-slim": "webpack --config BuildExtension/webpack/webpack.config.slim.js",
+    "build-json-parser": "webpack --config BuildExtension/webpack/webpack.config.json-parser.js",
     "build-all": "npm run build && npm run build-slim && npm run build-json-parser"
   },
   "repository": {
@@ -27,10 +27,11 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
+    "chrome-promise": "^3.0.4",
+    "copy-webpack-plugin": "^5.0.0",
     "dom-to-string": "^1.0.1",
     "socket.io-client": "^2.2.0",
     "socket.io-json-parser": "^2.1.0",
-    "copy-webpack-plugin": "^5.0.0",
     "strip-loader": "^0.1.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"

@@ -1,4 +1,5 @@
-var webpack = require("webpack");
+const path = require('path')
+const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -6,17 +7,17 @@ module.exports = {
   mode: 'development',
 
   entry: {
-    background: './src/background.js',
+    background: path.join(__dirname, '../src/background.js'),
   },
 
   output: {
-    path: require('path').join(__dirname, '../../ChromeExtension'),
+    path: path.join(__dirname, '../../ChromeExtension'),
     filename: '[name].js'
   },
 
   plugins: [
     new CopyPlugin([
-      { from: 'static' }
+      { from: path.join(__dirname, '../static') }
     ]),
   ],
 

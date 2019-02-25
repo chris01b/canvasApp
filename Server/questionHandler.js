@@ -4,7 +4,7 @@ const cse = require('./libs/cse');
 const Quizlet = require('./libs/quizlet');
 const print = require('./libs/print');
 
-forEachAsync = async function(array, callback) {
+function forEachAsync (array, callback) {
   try {
     for (let index = 0; index < array.length; index++) {
       callback(array[index], index, array);
@@ -18,12 +18,9 @@ module.exports = () => {
 
     async function findAnswers(questions) {
       let answers = [];
-      await forEachAsync(questions, async (question, index) => {
+      forEachAsync(questions, async (question, index) => {
         let myCse = new cse("AIzaSyB_YyRZ3ePQNEephDs20BwuH_N-k1C_GH4", "000633526768340694300:gdwf-ty5mtk");
         let myQuizlet = new Quizlet("R3snf5zu9W");
-
-        console.log((index+1));
-        console.log(question);
 
         sets = await myCse.makeQuery(question).catch(console.error);
         answer = await myQuizlet.search(sets, question);
