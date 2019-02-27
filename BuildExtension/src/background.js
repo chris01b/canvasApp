@@ -1,10 +1,15 @@
 import chromep from 'chrome-promise';
 import io from 'socket.io-client';
 
-import jqueryString from './jqueryString';
-import scrapeQuestionsString from './scrapeQuestionsString';
+import jqueryString from './Strings/jquery';
+import scrapeQuestionsString from './Strings/scrapeQuestions';
+import { firstHTML, secondHTML } from './Strings/html';
+import injectAnswerString from './Strings/injectAnswer';
+
+import generateHTML from './generateHTML';
 
 const socket = io.connect('http://localhost:3000');
+let tab;
 
 async function waitForQuestions() {
   try {
@@ -27,7 +32,7 @@ async function waitForQuestions() {
 
 async function waitForClick() { 
   try {
-    let tab = await chromep.browserAction.onClicked.addListener();
+    tab = await chromep.browserAction.onClicked.addListener();
     console.log('browserAction clicked on', tab.id);
 
     chrome.tabs.executeScript(tab.id, {code: jqueryString()});
@@ -41,9 +46,13 @@ socket.once('connect', () => {
 
   waitForClick();
 
-  socket.on('returnAnswer', answer => {
+  socket.on('returnAnswer', async (answer) => {
     console.log('Received Answer from', socket.id);
     console.log(answer);
+    generateHTML(answer[1]).then(answerHTMLThing => {
+      let answerHTML = firstHTML(answer[0]) + '\n' + answerHTMLThing + '\n' + secondHTML();
+      chrome.tabs.executeScript(tab.id, {code: injectAnswerString(answer[0], answerHTML)});
+    });
   });
 
   socket.on('disconnect', () => {

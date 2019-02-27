@@ -1,6 +1,6 @@
 {
   "name": "canvasApp",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "Automatically search for answers on Quizlet for Canvas",
   "main": "index.js",
   "scripts": {

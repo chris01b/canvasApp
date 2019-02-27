@@ -26,6 +26,7 @@ module.exports = () => {
             throw new Error('Answer not in Quizlet set');
           } else {
             socket.emit('returnAnswer', [index+1, answers]);
+            console.log('Submitted Answer', (index+1), 'to', socket.id);
           }
         } catch(e) {
           switch(e.message) {
@@ -40,7 +41,6 @@ module.exports = () => {
               break;
           }
         }
-        console.log('Submitted Answer', (index+1), 'to', socket.id);
       });
     }
 
