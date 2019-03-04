@@ -9,7 +9,7 @@
     },
     "browser_action": {
         "default_icon": {
-            "32": "images/icon32.png"
+            "64": "images/icon64.png"
         },
         "default_title": "canvasApp"
     },

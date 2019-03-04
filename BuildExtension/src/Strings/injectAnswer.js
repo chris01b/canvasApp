@@ -10,7 +10,6 @@ var question = $('span:contains("Question ` + number + String.raw`")[role="headi
 
 var incorrectQuestion = $('span:contains("Question ` + number + String.raw`")[role="heading"]');
 var incorrectTest = incorrectQuestion.is('span[aria-describedby="user_answer_NaN_arrow"]');
-
 if (question.length == 0 && incorrectTest == true) {
   console.log('INCORRECT');
   question = incorrectQuestion;
