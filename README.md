@@ -1,6 +1,8 @@
 # canvasApp
 Automatically search for answers from Quizlet on Canvas
 
+**This project is defunct.** But now there are many alternatives which do the same thing with AI.
+
 ## How to get the answers from the console
 Try a demo on [Repl](https://repl.it/@chris01b/canvasApp).
 
